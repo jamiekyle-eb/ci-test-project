@@ -1,14 +1,18 @@
 steps:
+  - label: ":buildkite: Debug"
+    command:
+      - ls
+      - pwd
+      - ls /var
+      - ls /var/buildkite
+      - ls /home
   - label: ":parcel: Build"
     command:
       - ls
-      - cat yarn.lock
-      - ls node_modules
-  - label: ":parcel: Build"
-    command:
-      - ls
-      - cat yarn.lock
-      - ls node_modules
+      - pwd
+      - ls /var
+      - ls /var/buildkite
+      - ls /home
     plugins:
       - docker#v1.1.1:
           image: "node:10"
