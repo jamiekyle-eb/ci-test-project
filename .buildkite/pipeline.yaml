@@ -1,6 +1,6 @@
 steps:
   - label: ":parcel: Build"
-    command: yarn build
+    command: ls
     plugins:
       - docker#v1.1.1:
           image: "node:10"
