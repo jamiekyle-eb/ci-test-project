@@ -1,14 +1,19 @@
+#!/bin/bash
+set -Eeuxo pipefail
+
 NEEDS_UPDATE=false
 
 # Check node/npm/bolt are on the correct versions
 if [[ ! $(node --version) =~ ^v10 ]]; then NEEDS_UPDATE=true; fi
 if [[ ! $(npm --version) =~ ^6 ]]; then NEEDS_UPDATE=true; fi
-if [[ ! $(bolt --version) =~ ^0.22 ]]; then NEEDS_UPDATE=true; fi
+if [[ ! $(yarn --version) =~ ^1.13 ]]; then NEEDS_UPDATE=true; fi
 
 # Check native build tools exist
 if [ ! $(command -v gcc) ]; then NEEDS_UPDATE=true; fi
 if [ ! $(command -v g++) ]; then NEEDS_UPDATE=true; fi
 if [ ! $(command -v make) ]; then NEEDS_UPDATE=true; fi
+
+echo "\$NEEDS_UPDATE=$NEEDS_UPDATE"
 
 if [ $NEEDS_UPDATE == true ]; then
   apt-get update
