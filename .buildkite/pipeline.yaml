@@ -3,15 +3,14 @@ steps:
     command:
       - ls
       - pwd
-      - ls /var
-      - ls /var/buildkite
+      - ls /
+      - ls /buildkite
       - ls /home
   - label: ":parcel: Build"
     command:
       - ls
       - pwd
-      - ls /var
-      - ls /var/buildkite
+      - ls /
       - ls /home
     plugins:
       - docker#v1.1.1:
