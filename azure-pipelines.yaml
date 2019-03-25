@@ -1,5 +1,8 @@
 jobs:
   - job: "HelloWorld"
     steps:
-      - script: echo Hello world
-        displayName: "HelloWorld"
+      - task: NodeTool@0
+        inputs:
+          versionSpec: "10.x"
+      - script: yarn install
+      - script: yarn run build
