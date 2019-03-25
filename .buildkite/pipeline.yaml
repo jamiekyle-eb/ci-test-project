@@ -1,12 +1,6 @@
 steps:
   - label: ":parcel: Build"
-    command:
-      # - ./.buildkite/setup.sh
-      # - yarn install
-      - yarn build
+    command: yarn build
     plugins:
-      # - git-clean#v0.0.1:
-      #     flags: "-fdxn --exclude=node_modules"
       - docker#v1.1.1:
           image: "node:10"
-          debug: true
