@@ -13,6 +13,7 @@ steps:
       - pwd
       - ls /
       - ls /home
+      - yarn build
     plugins:
       - docker#v1.1.1:
           image: "node:10"
