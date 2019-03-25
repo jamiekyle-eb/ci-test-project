@@ -25,6 +25,6 @@ echo yarn: $(yarn --version)
 
 echo --- :yarn: Installing Dependencies
 yarn install
-if [ $? -ne 0 ]]; then
+if [[ $? -ne 0 ]]; then
   echo "^^^ +++"
 fi
