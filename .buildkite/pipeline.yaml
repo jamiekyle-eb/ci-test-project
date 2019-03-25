@@ -4,8 +4,9 @@ steps:
       - ls
       - pwd
       - ls /
-      - ls /buildkite
+      - ls /buildkite/builds
       - ls /home
+      - ls /home/builds
   - label: ":parcel: Build"
     command:
       - ls
@@ -15,3 +16,5 @@ steps:
     plugins:
       - docker#v1.1.1:
           image: "node:10"
+          volumes:
+            - "$BUILDKITE_BUILD_CHECKOUT_PATH:/workdir"
