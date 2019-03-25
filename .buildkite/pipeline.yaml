@@ -1,18 +1,11 @@
 steps:
   - label: ":buildkite: Debug"
     command:
-      - ls
-      - pwd
-      - ls /
-      - ls /buildkite/builds
-      - ls /home
-      - ls /home/builds
+      - ls $BUILDKITE_BUILD_CHECKOUT_PATH
   - label: ":parcel: Build"
     command:
-      - ls
-      - pwd
-      - ls /
-      - ls /home
+      - ls $BUILDKITE_BUILD_CHECKOUT_PATH
+      - ls /workdir
       - yarn build
     plugins:
       - docker#v1.1.1:
