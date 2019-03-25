@@ -1,0 +1,5 @@
+steps:
+  - label: ":yarn: Install"
+    command: yarn install
+  - label: ":parcel: Build"
+    command: yarn build
