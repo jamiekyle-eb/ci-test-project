@@ -28,8 +28,6 @@ echo node: $(node --version)
 echo npm: $(npm --version)
 echo yarn: $(yarn --version)
 
-ls node_modules
-
 echo --- :yarn: Installing Dependencies
 yarn install --frozen-lockfile
 if [[ $? -ne 0 ]]; then
