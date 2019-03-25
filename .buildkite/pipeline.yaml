@@ -10,5 +10,6 @@ steps:
     plugins:
       - docker#v1.1.1:
           image: "node:10"
+          workdir: "$BUILDKITE_BUILD_CHECKOUT_PATH"
           volumes:
-            - "$BUILDKITE_BUILD_CHECKOUT_PATH:/workdir"
+            - "$BUILDKITE_BUILD_CHECKOUT_PATH:$BUILDKITE_BUILD_CHECKOUT_PATH"
