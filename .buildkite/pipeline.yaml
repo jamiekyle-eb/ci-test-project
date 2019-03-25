@@ -1,6 +1,14 @@
 steps:
   - label: ":parcel: Build"
-    command: ls
+    command:
+      - ls
+      - cat yarn.lock
+      - ls node_modules
+  - label: ":parcel: Build"
+    command:
+      - ls
+      - cat yarn.lock
+      - ls node_modules
     plugins:
       - docker#v1.1.1:
           image: "node:10"
