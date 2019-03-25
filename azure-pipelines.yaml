@@ -1,5 +1,5 @@
 jobs:
-  - job: "Hello World"
+  - job: "HelloWorld"
     steps:
       - script: echo Hello world
-        displayName: "Hello World"
+        displayName: "HelloWorld"
