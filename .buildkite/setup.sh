@@ -29,7 +29,7 @@ echo npm: $(npm --version)
 echo yarn: $(yarn --version)
 
 echo --- :yarn: Installing Dependencies
-yarn install
+yarn install --frozen-lockfile
 if [[ $? -ne 0 ]]; then
   echo "^^^ +++"
 fi
