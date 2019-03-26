@@ -34,7 +34,7 @@ echo "Restoring Yarn Cache"
 mkdir -p $YARN_CACHE_PATH
 cp -r $YARN_CACHE_PATH node_modules
 
-ls node_modules
+ls -la node_modules
 
 echo --- :yarn: Installing Dependencies
 yarn install --frozen-lockfile
