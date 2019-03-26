@@ -28,14 +28,17 @@ echo node: $(node --version)
 echo npm: $(npm --version)
 echo yarn: $(yarn --version)
 
-CACHE_PATH="/caches/yarn/$BUILDKITE_ORGANIZATION_SLUG/$BUILDKITE_PIPELINE_SLUG"
+YARN_CACHE_PATH="/caches/yarn/$BUILDKITE_ORGANIZATION_SLUG/$BUILDKITE_PIPELINE_SLUG"
 
-mkdir -p $CACHE_PATH
-rm -rf ./node_modules
-ln -s $CACHE_PATH ./node_modules
+echo "Restoring Yarn Cache"
+mkdir -p $YARN_CACHE_PATH
+cp -r $YARN_CACHE_PATH node_modules
 
 echo --- :yarn: Installing Dependencies
 yarn install --frozen-lockfile
 if [[ $? -ne 0 ]]; then
   echo "^^^ +++"
+else
+  echo "Saving Yarn Cache"
+  cp -r node_modules $YARN_CACHE_PATH
 fi
