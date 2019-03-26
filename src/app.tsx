@@ -1,9 +1,15 @@
 import React from "react"
 import { render } from "react-dom"
-import { Counter } from "./counter"
+import { COMPONENTS } from "./_components.gen"
 
 function App() {
-	return <Counter />
+	return (
+		<>
+			{COMPONENTS.map((Component, index) => (
+				<Component key={index} />
+			))}
+		</>
+	)
 }
 
 render(<App />, document.getElementById("root"))
