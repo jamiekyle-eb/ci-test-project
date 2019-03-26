@@ -3,3 +3,6 @@ steps:
     command:
       - ./.buildkite/setup.sh
       - yarn build
+    plugins:
+      - git-clean#v0.0.1:
+          flags: "-fdqx --exclude=node_modules"
