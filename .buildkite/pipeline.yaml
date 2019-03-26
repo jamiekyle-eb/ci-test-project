@@ -2,7 +2,7 @@ steps:
   - label: ":parcel: Build"
     command:
       - ./.buildkite/setup.sh
-      - yarn build --cache-dir $PARCEL_CACHE_PATH
+      - yarn build --cache-dir "/caches/parcel/$BUILDKITE_ORGANIZATION_SLUG/$BUILDKITE_PIPELINE_SLUG"
     plugins:
       - git-clean#v0.0.1:
           flags: "-fdqx --exclude=node_modules"
