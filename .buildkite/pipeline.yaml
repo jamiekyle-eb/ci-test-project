@@ -5,4 +5,4 @@ steps:
       - yarn build
     plugins:
       - git-clean#v0.0.1:
-          flags: "-fdq --exclude=node_modules"
+          flags: "-fdqx --exclude=node_modules"
