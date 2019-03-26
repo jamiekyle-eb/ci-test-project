@@ -29,7 +29,8 @@ echo node: $(node --version)
 echo npm: $(npm --version)
 echo yarn: $(yarn --version)
 
-YARN_CACHE_PATH="/caches/yarn/$BUILDKITE_ORGANIZATION_SLUG/$BUILDKITE_PIPELINE_SLUG"
+export YARN_CACHE_PATH="/caches/yarn/$BUILDKITE_ORGANIZATION_SLUG/$BUILDKITE_PIPELINE_SLUG"
+export PARCEL_CACHE_PATH="/caches/parcel/$BUILDKITE_ORGANIZATION_SLUG/$BUILDKITE_PIPELINE_SLUG"
 
 if ! cmp --silent node_modules/.yarn-integrity $YARN_CACHE_PATH/node_modules/.yarn-integrity; then
   echo "--- :yarn: Restoring from cache"
