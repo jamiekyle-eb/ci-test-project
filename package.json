@@ -1,5 +1,5 @@
 {
-	"name": "azure-devops-pipelines-test-project",
+	"name": "ci-test-project",
 	"scripts": {
 		"build": "parcel build src/index.html",
 		"start": "parcel src/index.html",
