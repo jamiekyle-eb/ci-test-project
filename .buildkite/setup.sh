@@ -16,6 +16,7 @@ if [ ! $(command -v make) ]; then NEEDS_UPDATE=true; fi
 echo "\$NEEDS_UPDATE=$NEEDS_UPDATE"
 
 if [ $NEEDS_UPDATE == true ]; then
+  echo "--- Installing native dependencies"
   apt-get update
   apt-get install -y gnupg2
   curl -sL https://deb.nodesource.com/setup_10.x | bash -
@@ -31,21 +32,21 @@ echo yarn: $(yarn --version)
 YARN_CACHE_PATH="/caches/yarn/$BUILDKITE_ORGANIZATION_SLUG/$BUILDKITE_PIPELINE_SLUG"
 
 if ! cmp --silent node_modules/.yarn-integrity $YARN_CACHE_PATH/node_modules/.yarn-integrity; then
-  echo "--- :yarn: Restoring Cache"
+  echo "--- :yarn: Restoring from cache"
   rm -rf node_modules
   mkdir -p $YARN_CACHE_PATH/node_modules
   cp -r $YARN_CACHE_PATH/node_modules node_modules
 fi
 
-echo --- :yarn: Installing Dependencies
+echo "--- :yarn: Installing dependencies"
 yarn install --frozen-lockfile
 if [[ $? -ne 0 ]]; then
   echo "^^^ +++"
 else
   if ! cmp --silent node_modules/.yarn-integrity $YARN_CACHE_PATH/node_modules/.yarn-integrity; then
-    echo "--- :yarn: Saving Cache"
+    echo "--- :yarn: Saving to cache"
     cp -r node_modules $YARN_CACHE_PATH
   fi
 fi
 
-echo "+++ :buildkite: Running Job"
+echo "+++ :buildkite: Running job command"
