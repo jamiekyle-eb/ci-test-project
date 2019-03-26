@@ -17,10 +17,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - restore_cache:
           keys:
-            - v1-parcel-build-cache-{{ checksum "package.json" }}
             - v1-parcel-build-cache-
       - run: yarn build
       - save_cache:
           paths:
             - .cache
-          key: v1-parcel-build-cache-{{ checksum "package.json" }}
+          key: v1-parcel-build-cache-{{ epoch }}
