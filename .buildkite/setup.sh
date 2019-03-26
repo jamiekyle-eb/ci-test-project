@@ -40,8 +40,10 @@ yarn install --frozen-lockfile
 if [[ $? -ne 0 ]]; then
   echo "^^^ +++"
 else
-  echo "--- :yarn: Saving Cache"
-  cp -r node_modules $YARN_CACHE_PATH
+  if [ ! cmp --silent node_modules/.yarn-integrity $YARN_CACHE_PATH/node_modules/.yarn-integrity ]; then
+    echo "--- :yarn: Saving Cache"
+    cp -r node_modules $YARN_CACHE_PATH
+  fi
 fi
 
 echo "+++ :buildkite: Running Job"
