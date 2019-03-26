@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Running .buildkite/hooks/post-checkout"
+
+ls -la . || true
+ls -la node_modules || true

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Running .buildkite/hooks/pre-checkout"
+
+ls -la . || true
+ls -la node_modules || true
+
+mkdir -p node_modules
+touch node_modules/wat
