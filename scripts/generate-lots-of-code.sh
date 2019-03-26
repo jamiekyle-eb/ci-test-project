@@ -6,7 +6,7 @@ mkdir -p ./src/_components
 
 echo "export const COMPONENTS = []" > ./src/_components.gen.js
 
-for i in {1..1000}; do
+for i in {1..2000}; do
   file_path=./src/_components/counter-$i.gen.tsx
   cache_bust=$(uuidgen)
   echo "// Generated file, do not edit manually." > $file_path
