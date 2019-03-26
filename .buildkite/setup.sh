@@ -30,10 +30,12 @@ echo yarn: $(yarn --version)
 
 YARN_CACHE_PATH="/caches/yarn/$BUILDKITE_ORGANIZATION_SLUG/$BUILDKITE_PIPELINE_SLUG"
 
-echo "--- :yarn: Restoring Cache"
-rm -rf node_modules
-mkdir -p $YARN_CACHE_PATH/node_modules
-cp -r $YARN_CACHE_PATH/node_modules node_modules
+if ! cmp --silent node_modules/.yarn-integrity $YARN_CACHE_PATH/node_modules/.yarn-integrity; then
+  echo "--- :yarn: Restoring Cache"
+  rm -rf node_modules
+  mkdir -p $YARN_CACHE_PATH/node_modules
+  cp -r $YARN_CACHE_PATH/node_modules node_modules
+fi
 
 echo --- :yarn: Installing Dependencies
 yarn install --frozen-lockfile
