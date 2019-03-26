@@ -35,10 +35,6 @@ rm -rf node_modules
 mkdir -p $YARN_CACHE_PATH/node_modules
 cp -r $YARN_CACHE_PATH/node_modules node_modules
 
-ls -la node_modules | head -10
-ls -la $YARN_CACHE_PATH | head -10
-ls -la $YARN_CACHE_PATH/node_modules | head -10
-
 echo --- :yarn: Installing Dependencies
 yarn install --frozen-lockfile
 if [[ $? -ne 0 ]]; then
@@ -46,8 +42,4 @@ if [[ $? -ne 0 ]]; then
 else
   echo "Saving Yarn Cache"
   cp -r node_modules $YARN_CACHE_PATH
-
-  ls -la node_modules | head -10
-  ls -la $YARN_CACHE_PATH | head -10
-  ls -la $YARN_CACHE_PATH/node_modules | head -10
 fi
